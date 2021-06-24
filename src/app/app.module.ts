@@ -2,13 +2,23 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import {BooksComponent} from "./books/books.component";
+import {BooksAddComponent} from "./books-add/books-add.component";
+import {BooksDetailsComponent} from "./books-details/books-details.component";
+import {BooksEditComponent} from "./books-edit/books-edit.component";
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BooksComponent,
+    BooksAddComponent,
+    BooksDetailsComponent,
+    BooksEditComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' })
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

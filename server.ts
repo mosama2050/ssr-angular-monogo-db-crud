@@ -8,13 +8,14 @@ import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 import * as mongoose from 'mongoose';
+import {BookRoute} from "./routes/book-routes";
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/shofha/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
-
+  const bookRoutes : BookRoute = new BookRoute();
 
   mongoose.connect('mongodb://localhost/angular-ssr', { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
     .then(() =>  console.log('connection successful'))
@@ -33,8 +34,9 @@ export function app(): express.Express {
   server.use(express.urlencoded({ extended: true }));
 
   // server.use(cors());
-  //
-  // bookRoute.bookRoute(server);
+
+   // @ts-ignore
+  bookRoute.bookRoute(server);
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
