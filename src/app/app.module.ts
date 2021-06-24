@@ -7,7 +7,8 @@ import {BooksAddComponent} from "./books-add/books-add.component";
 import {BooksDetailsComponent} from "./books-details/books-details.component";
 import {BooksEditComponent} from "./books-edit/books-edit.component";
 import { AppRoutingModule } from './app-routing.module';
-
+//services crud
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
